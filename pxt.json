@@ -1,6 +1,6 @@
 {
     "name": "pxt-fwd-edu-testing",
-    "version": "1.45.8",
+    "version": "1.46.1",
     "description": "Forward Education (FWD EDU) Climate Action Kit Gen. 2",
     "license": "MIT",
     "dependencies": {
@@ -107,6 +107,8 @@
         "ms-aquaticgarbage-modify.md",
         "ms-risingsea-use.md",
         "ms-risingsea-modify.md",
+        "ms-smartbin-use.md",
+        "ms-smartbin-modify.md",
         "ms-smarthome-use.md",
         "ms-smarthome-modify.md",
         "ms-sodis-use.md",
