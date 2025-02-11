@@ -11,8 +11,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  if: github.event.review.state == 'approved'
   auto-bump:
+    if: github.event.review.state == 'approved'
     name: Auto-bump and release
     runs-on: ubuntu-latest
 
