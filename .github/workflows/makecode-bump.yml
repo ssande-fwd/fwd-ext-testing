@@ -65,9 +65,21 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const prNumber = context.issue.number;
-            return github.rest.pulls.merge({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // 1. Get the latest PR data (including the head SHA)
+            const pr = await github.rest.pulls.get({
+              owner: owner,
+              repo: repo,
               pull_number: prNumber,
-              merge_method: 'merge'
+            });
+
+            // 2. Merge the PR using the updated head SHA
+            return github.rest.pulls.merge({
+              owner: owner,
+              repo: repo,
+              pull_number: prNumber,
+              merge_method: 'merge', // Or 'squash' or 'rebase'
+              sha: pr.data.head.sha, // Use the latest head SHA
             });
