@@ -2,12 +2,9 @@
 name: Auto-bump
 
 on:
-  push:
-    branches:
-        - main
-    paths-ignore:
-      - '.github/workflows/**'
-      - '.gitignore'
+  pull_request_review:
+    types: [submitted] # Only trigger on review submissions
+    branches: [main] # Your target branches
 
 concurrency:
   group: ${{ github.head_ref || github.run_id }}
